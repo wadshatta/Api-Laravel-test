@@ -25,3 +25,10 @@ Route::get('listparms/{id?}',[DeviceController::class,"listparms"]);
 
 Route::post('add',[DeviceController::class,"add"]);
 
+Route::put('update',[DeviceController::class,"update"]);
+
+
+/*
+update
+*/
+

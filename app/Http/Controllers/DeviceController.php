@@ -25,4 +25,17 @@ class DeviceController extends Controller
              return ["Result"=>"this is else error"];
     }   
 }
+function update(Request $request){
+    $device = Device::find($request->id);
+    $device -> name = $request->name;
+    $device -> company = $request->company;
+    $device -> model = $request->model;
+    $result = $device->save();
+    if($result){
+        return ["Result"=>"successfully updated"];
+    }else{
+        return ["Result"=>"am sorry its not work"];
+    }
+    
+}
 }
