@@ -38,4 +38,10 @@ function update(Request $request){
     }
     
 }
+function search($name){
+
+     return   Device::where("name","like","%".$name."%")->get();
+    
+  
+}
 }
