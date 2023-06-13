@@ -44,4 +44,16 @@ function search($name){
     
   
 }
+function Delete($id){
+    $done = Device::find($id);
+    $done->delete();
+    if($done){
+        return ["Result" => "its done"];
+    }
+    else{
+        return ["Result" => "sorry its not work"];
+    }
+    
+   
+}
 }
