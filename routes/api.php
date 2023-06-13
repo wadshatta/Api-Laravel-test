@@ -29,7 +29,7 @@ Route::put('update',[DeviceController::class,"update"]);
 
 Route::get('search/{name}',[DeviceController::class,"search"]);
 
-Route::get('Delete/{id}',[DeviceController::class,"Delete"]);
+Route::delete('Delete/{id}',[DeviceController::class,"Delete"]);
 
 
 /*
