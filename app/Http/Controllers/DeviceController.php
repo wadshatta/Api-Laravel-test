@@ -65,7 +65,7 @@ function testData(Request $request){
     $validator = Validator::make($request->all(),$rules);
     if ($validator -> fails()){
 
-        return $validator->errors();
+        return response()->json($validator->errors(),401);
 
     }else{
         $device = new Device;
