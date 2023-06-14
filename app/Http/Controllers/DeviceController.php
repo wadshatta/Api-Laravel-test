@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Device;
+use Illuminate\Support\Facades\Validator;
 
 class DeviceController extends Controller
 {
@@ -56,4 +57,28 @@ function Delete($id){
     
    
 }
+
+function testData(Request $request){
+    $rules=array(
+        "model" => "required|min:2|max:4"
+    );
+    $validator = Validator::make($request->all(),$rules);
+    if ($validator -> fails()){
+
+        return $validator->errors();
+
+    }else{
+        $device = new Device;
+        $device->name = $request->name;
+        $device->company = $request->company;
+        $device->model = $request->model;
+        $result = $device->save();
+        return [
+            "Result" => "we have successfully saved"
+        ];
+
+    }
+
+}
+
 }

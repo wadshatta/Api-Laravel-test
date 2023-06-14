@@ -31,6 +31,8 @@ Route::get('search/{name}',[DeviceController::class,"search"]);
 
 Route::delete('Delete/{id}',[DeviceController::class,"Delete"]);
 
+Route::delete('save',[DeviceController::class,"testData"]);
+
 
 /*
 update
