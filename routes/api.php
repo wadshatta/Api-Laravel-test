@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\dummyAPI;
 use App\Http\Controllers\DeviceController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,24 +19,37 @@ use App\Http\Controllers\MemberController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-Route::get("data",[dummyAPI::class,"getData"]);
-Route::get('list',[DeviceController::class,"list"]);
-Route::get('listparms/{id?}',[DeviceController::class,"listparms"]);
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
-Route::post('add',[DeviceController::class,"add"]);
+Route::group(['middleware' => 'auth:sanctum'], function(){
+    Route::apiResource('member',MemberController::class);
+    Route::get("data",[dummyAPI::class,"getData"]);
+    Route::get('list',[DeviceController::class,"list"]);
+    Route::get('listparms/{id?}',[DeviceController::class,"listparms"]);
+    Route::post('add',[DeviceController::class,"add"]);
 
-Route::put('update',[DeviceController::class,"update"]);
+    Route::put('update',[DeviceController::class,"update"]);
 
-Route::get('search/{name}',[DeviceController::class,"search"]);
+    Route::get('search/{name}',[DeviceController::class,"search"]);
 
-Route::delete('Delete/{id}',[DeviceController::class,"Delete"]);
+    Route::delete('Delete/{id}',[DeviceController::class,"Delete"]);
 
-Route::delete('save',[DeviceController::class,"testData"]);
+    Route::delete('save',[DeviceController::class,"testData"]);
 
-Route::apiResource('member',MemberController::class);
+    });
+
+
+
+
+
+
+
+
+
+
+Route::post("login",[UserController::class,'index']);
 
 
 /*
