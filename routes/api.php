@@ -6,6 +6,7 @@ use App\Http\Controllers\dummyAPI;
 use App\Http\Controllers\DeviceController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\FileController;
 
 
 /*
@@ -37,6 +38,8 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::delete('Delete/{id}',[DeviceController::class,"Delete"]);
 
     Route::delete('save',[DeviceController::class,"testData"]);
+
+    Route::post('upload',[FileController::class,"upload"]);
 
     });
 
